@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
+
+h1 {
+    font-size: 64px;
+}
+
+h2 {
+    font-size: 40px;
+}
+
+h3 {
+    font-size: 32px;
+}
+
+h4 {
+    font-size: 24px;
+}
+
+h5,
+input {
+    font-size: 21px;
+}
+
+h6 {
+    font-size: 18px;
+}
+
+
+.text {
+    font-family: 'Krona One', sans-serif;
+    font-weight: 400;
+    color: var(--text);
+}
+
+.text-extend {
+    color: var(--text-extend);
+}
+
+.text-accent {
+    color: var(--text-accent);
+}
