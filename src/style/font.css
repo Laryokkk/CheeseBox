@@ -39,3 +39,13 @@ h6 {
 .text-accent {
     color: var(--text-accent);
 }
+
+a:hover>*:not(.text-extend),
+a:active>*:not(.text-extend) {
+    color: var(--text-accent);
+}
+
+a:hover>.text-accent,
+a:active>.text-accent {
+    color: var(--text);
+}
