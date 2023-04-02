@@ -8,11 +8,12 @@
     } from "$lib/utils/util-validate.js";
 
     export let type = "text";
-    export let placeholder;
-    export let autocomplete;
-    export let required = "false"
-    export let parentHandlerInput;
-    export let style;
+    export let placeholder = undefined;
+    export let minlength = undefined;
+    export let autocomplete = undefined;
+    export let required = undefined;
+    export let parentHandlerInput = undefined;
+    export let style = undefined;
 
     let isValidInput;
     let invalid;
@@ -41,7 +42,7 @@
 
     const handlerInput = (e) => {
         const { value } = e.target;
-        parentHandlerInput(value);
+        parentHandlerInput && parentHandlerInput(value);
 
         invalid = !isValidInputText(value);
     };
@@ -68,6 +69,7 @@
         {invalid}
         {required}
 
+        {minlength}
         {style}
     />
 </div>

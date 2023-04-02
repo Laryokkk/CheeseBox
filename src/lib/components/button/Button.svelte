@@ -1,13 +1,13 @@
 <script>
-    export let text;
-    export let style;
-    export let handlerClick;
+    export let text = undefined;
+    export let style = undefined;
+    export let handlerClick = undefined;
 </script>
 
 <button {style} on:click={handlerClick}>
-    <h4 class="text">
+    <h5 class="text">
         {text}
-    </h4>
+    </h5>
 </button>
 
 <style>
