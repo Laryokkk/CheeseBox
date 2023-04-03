@@ -3,7 +3,6 @@
     import Button from "$lib/components/button/Button.svelte";
     import { fetchPost } from "$lib/utils/util-fetch.js";
     import { setCookie } from "$lib/utils/util-cookie.js";
-    
 
     const handlerSubmit = async (e) => {
         const { target } = e;
@@ -20,11 +19,17 @@
 
             if (status > 200) return;
 
-            const { id_user, firstname_user, lastname_user } = data;
+            const { id_user, firstname_user, lastname_user, permission_name } =
+                data;
 
             setCookie("firstname_user", firstname_user, 1);
             setCookie("lastname_user", lastname_user, 1);
             setCookie("id_user", id_user, 1);
+            if (permission_name.includes("consorzio")) {
+                setCookie("permission", "consorzio", 1);
+            } else if (permission_name.includes("caseificio")) {
+                setCookie("code_caseificio", "beta_code", 1);
+            }
 
             window.location.href = "/";
         });

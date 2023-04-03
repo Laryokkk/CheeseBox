@@ -3,14 +3,13 @@
     import { getCookie } from "$lib/utils/util-cookie.js";
 
     let user;
-
-    const checkUser = () => {
-        user = getCookie("id_user");
-    };
+    let permission;
+    let code;
 
     onMount(() => {
-        checkUser();
-        setInterval(checkUser(), 5000);
+        user = getCookie("id_user");
+        permission = getCookie("permission");
+        code = getCookie("code_caseificio");
     });
 </script>
 
@@ -21,6 +20,15 @@
         </a>
     </div>
     <div class="right">
+        {#if permission === "consorzio"}
+            <a href="gestione/consorzio">
+                <h4 class="text">Gestione</h4>
+            </a>
+        {:else if permission === "caseificio"}
+            <a href="gestione/caseificio/{code}">
+                <h4 class="text">Gestione</h4>
+            </a>
+        {/if}
         {#if user}
             <a href="sign-out/">
                 <h4 class="text text-accent">Esci</h4>
@@ -41,5 +49,12 @@
         flex-direction: row;
 
         padding: 2rem 4rem;
+    }
+
+    div.right {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap: 3rem;
     }
 </style>
