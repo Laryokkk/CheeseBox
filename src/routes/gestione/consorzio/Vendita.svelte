@@ -1,13 +1,14 @@
 <script>
-    // import HeaderExtend from "$lib/components/header/HeaderExtend.svelte";
+    import HeaderSection from "../HeaderSection.svelte";
     import Check from "$lib/components/check/Check.svelte";
     import Input from "$lib/components/input/Input.svelte";
     import Button from "$lib/components/button/Button.svelte";
 </script>
 
 <div class="container">
-    <h4 class="text text-accent">Forme Vendita</h4>
+    <HeaderSection />
     <form class="form-vendita">
+        <h4 class="text text-accent">Forme Vendita</h4>
         <div class="container-form">
             <div class="wrapper">
                 <div class="container-input">
@@ -38,16 +39,16 @@
                 </div>
             </div>
         </div>
-        <Button text="Salva"/>
+        <Button text="Salva" />
     </form>
     <Check />
 </div>
 
 <style>
     div.container {
-        height: 85%;
-        
-        padding: 4vw;
+        height: 90%;
+
+        padding: 2rem 4vw;
 
         display: flex;
         justify-content: space-between;
@@ -59,7 +60,7 @@
         display: flex;
         align-items: flex-start;
         flex-direction: column;
-        gap: 3rem;
+        gap: 2rem;
     }
 
     div.container-form {

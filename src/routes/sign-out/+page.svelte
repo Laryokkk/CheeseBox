@@ -6,6 +6,7 @@
         deleteCookie("firstname_user");
         deleteCookie("lastname_user");
         deleteCookie("id_user");
+        deleteCookie("permission");
 
         window.location.href = "/";
     });

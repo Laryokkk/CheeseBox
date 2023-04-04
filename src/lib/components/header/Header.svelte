@@ -25,16 +25,16 @@
                 <h4 class="text">Gestione</h4>
             </a>
         {:else if permission === "caseificio"}
-            <a href="gestione/caseificio/{code}">
+            <a href="/gestione/caseificio/{code}">
                 <h4 class="text">Gestione</h4>
             </a>
         {/if}
         {#if user}
-            <a href="sign-out/">
+            <a href="/sign-out/">
                 <h4 class="text text-accent">Esci</h4>
             </a>
         {:else}
-            <a href="sign-in/">
+            <a href="/sign-in/">
                 <h4 class="text text-accent">Accedi</h4>
             </a>
         {/if}
