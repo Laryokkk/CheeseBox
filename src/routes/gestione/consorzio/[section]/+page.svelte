@@ -6,7 +6,7 @@
 
     export let data;
 
-    const { links } = data;
+    $: links = data.links;
     $: section = data.section;
 
 </script>

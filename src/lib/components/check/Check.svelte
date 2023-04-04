@@ -9,7 +9,7 @@
 </script>
 
 <section class="container">
-    <textarea class="text" name="check" cols="30" rows="10" {value} />
+    <textarea class="text" name="check" cols="30" rows="10" readonly {value} />
 </section>
 
 <style>
@@ -23,6 +23,8 @@
 
         background-color: var(--background-input);
         resize: none;
+        writing-mode: unset;
         outline: none;
+        cursor: auto;
     }
 </style>
