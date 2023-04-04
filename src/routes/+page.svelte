@@ -1,4 +1,5 @@
 <script>
+    import Header from "$lib/components/header/Header.svelte";
     import Input from "$lib/components/input/Input.svelte";
     import HousePhoto from "$lib/components/house/HousePhoto.svelte";
     import CheeseHeading from "$lib/assets/dalle_cheese_0.png";
@@ -66,6 +67,7 @@
     };
 </script>
 
+<Header />
 <div class="container">
     <section id="heading">
         <div class="text">

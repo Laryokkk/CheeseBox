@@ -49,3 +49,8 @@ a:hover>.text-accent,
 a:active>.text-accent {
     color: var(--text);
 }
+
+a:hover>.text-extend,
+a:active>.text-extend {
+    color: var(--text-accent);
+}

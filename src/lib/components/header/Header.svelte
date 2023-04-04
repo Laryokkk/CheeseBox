@@ -21,7 +21,7 @@
     </div>
     <div class="right">
         {#if permission === "consorzio"}
-            <a href="gestione/consorzio">
+            <a href="/gestione/consorzio/vendita">
                 <h4 class="text">Gestione</h4>
             </a>
         {:else if permission === "caseificio"}

@@ -1,5 +1,5 @@
 <script>
-    export let text = undefined;
+    export let text = "";
     export let style = undefined;
     export let handlerClick = undefined;
 </script>

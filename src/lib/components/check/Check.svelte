@@ -1,0 +1,28 @@
+<script>
+    export let items = ["hello", "man"];
+
+    let value = "";
+
+    items.forEach((item) => {
+        value = value.concat(` ${item}`);
+    });
+</script>
+
+<section class="container">
+    <textarea class="text" name="check" cols="30" rows="10" {value} />
+</section>
+
+<style>
+    textarea[name="check"] {
+        width: calc(100% - 4rem);
+        height: calc(25vh - 2rem);
+
+        padding: 1rem 2rem;
+        border: 0;
+        border-radius: 2rem;
+
+        background-color: var(--background-input);
+        resize: none;
+        outline: none;
+    }
+</style>
