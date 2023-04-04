@@ -8,7 +8,7 @@
 
     $: links = data.links;
     $: section = data.section;
-
+    $: content = data.content;
 </script>
 
 <section class="container">
@@ -18,7 +18,7 @@
             <Vendita />
         {/if}
         {#if section === "statistica"}
-            <Statistica />
+            <Statistica {content} />
         {/if}
         {#if section === "caseifici"}
             <Caseifici />
