@@ -3,6 +3,7 @@
     import { onMount } from "svelte";
 
     export let links = [];
+    export let goBack = false;
     let username;
 
     onMount(() => {
@@ -28,7 +29,13 @@
             </a>
         {/each}
     </div>
-    <div class="footer" />
+    <div class="footer">
+        {#if goBack}
+            <a href="/gestione/consorzio/vendita">
+                <img src="/assets/arrow-right.svg" alt="go back arrow" class="go-back">
+            </a>
+        {/if}
+    </div>
 </section>
 
 <style>
@@ -55,5 +62,13 @@
         justify-content: space-around;
         flex-direction: column;
         gap: 1rem;
+    }
+
+    img.go-back {
+        transition: all 0.2s ease-in-out;
+    }
+
+    img.go-back:hover {
+        scale: 1.1;
     }
 </style>
