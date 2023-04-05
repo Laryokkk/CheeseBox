@@ -6,6 +6,7 @@
         deleteCookie("firstname_user");
         deleteCookie("lastname_user");
         deleteCookie("id_user");
+        deleteCookie("code_caseificio");
         deleteCookie("permission");
 
         window.location.href = "/";

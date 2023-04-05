@@ -41,7 +41,9 @@
 <style>
     section.menu {
         height: calc(100vh - 6rem);
-        width: calc(20vw - 6rem);
+        width: 16vw;
+        max-width: 16vw;
+        min-width: 16vw;
 
         display: flex;
         align-items: center;

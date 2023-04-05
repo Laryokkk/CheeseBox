@@ -29,6 +29,7 @@
                 setCookie("permission", "consorzio", 1);
             } else if (permission_name.includes("caseificio")) {
                 setCookie("code_caseificio", "beta_code", 1);
+                setCookie("permission", "caseificio", 1);
             }
 
             window.location.href = "/";
