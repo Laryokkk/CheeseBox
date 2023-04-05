@@ -156,9 +156,9 @@
         padding: 2rem 4vw;
 
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         flex-direction: column;
-        gap: 2rem;
+        gap: 6rem;
     }
 
     div.container {

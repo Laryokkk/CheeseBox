@@ -5,7 +5,7 @@
     import Button from "$lib/components/button/Button.svelte";
 </script>
 
-<div class="container">
+<section class="container">
     <HeaderSection />
     <form class="form-vendita">
         <h4 class="text text-accent">Forme Vendita</h4>
@@ -42,18 +42,18 @@
         <Button text="Salva" />
     </form>
     <Check />
-</div>
+</section>
 
 <style>
-    div.container {
+    section.container {
         height: 90%;
 
         padding: 2rem 4vw;
 
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         flex-direction: column;
-        gap: 2rem;
+        gap: 6rem;
     }
 
     form.form-vendita {
