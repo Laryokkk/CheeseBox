@@ -1,6 +1,5 @@
 <script>
     import Menu from "$lib/components/menu/Menu.svelte";
-    import Caseifici from "../Caseifici.svelte";
     import Vendita from "../Vendita.svelte";
     import Statistica from "../Statistica.svelte";
 
@@ -19,9 +18,6 @@
         {/if}
         {#if section === "statistica"}
             <Statistica {content} />
-        {/if}
-        {#if section === "caseifici"}
-            <Caseifici />
         {/if}
     </section>
 </section>

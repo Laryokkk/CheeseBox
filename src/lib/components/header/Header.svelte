@@ -4,12 +4,10 @@
 
     let user;
     let permission;
-    let code;
 
     onMount(() => {
         user = getCookie("id_user");
         permission = getCookie("permission");
-        code = getCookie("code_caseificio");
     });
 </script>
 
@@ -21,11 +19,11 @@
     </div>
     <div class="right">
         {#if permission === "consorzio"}
-            <a href="/gestione/consorzio/vendita">
+            <a href="/gestione/consorzio/statistica">
                 <h4 class="text">Gestione</h4>
             </a>
         {:else if permission === "caseificio"}
-            <a href="/gestione/caseificio/{code}">
+            <a href="/gestione/caseificio/statistica">
                 <h4 class="text">Gestione</h4>
             </a>
         {/if}

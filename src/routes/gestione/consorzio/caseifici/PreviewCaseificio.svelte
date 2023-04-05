@@ -2,7 +2,7 @@
     export let name;
     export let code;
 
-    const href = `/gestione/caseificio/${code}/statistica`;
+    const href = `/gestione/caseificio/statistica`;
 </script>
 
 <a {href}>

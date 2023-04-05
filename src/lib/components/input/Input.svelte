@@ -9,11 +9,13 @@
 
     export let type = "text";
     export let placeholder = undefined;
+    export let readonly = false;
     export let minlength = undefined;
     export let autocomplete = undefined;
     export let required = undefined;
     export let parentHandlerInput = undefined;
     export let style = undefined;
+    export let value = null;
 
     let isValidInput;
     let invalid;
@@ -62,6 +64,7 @@
 
         {placeholder}
         {autocomplete}
+        {readonly}
 
         on:input={handlerInput}
         on:change={handlerValidation}
@@ -71,6 +74,8 @@
 
         {minlength}
         {style}
+
+        {value}
     />
 </div>
 
@@ -94,5 +99,10 @@
     input.invalid {
         transition: all 0.4s ease-out;
         box-shadow: 0px 0px 4px 1px var(--error);
+    }
+
+    input:read-only {
+        color: var(--text-readonly);
+        cursor: auto;
     }
 </style>
