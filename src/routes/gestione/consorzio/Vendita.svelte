@@ -16,7 +16,7 @@
                     <Input type="number" required="true" />
                 </div>
                 <div class="container-input">
-                    <h5 class="text">Qualita:</h5>
+                    <h5 class="text">Scelta:</h5>
                     <Input type="select" options={[]} required="true" />
                 </div>
                 <div class="container-input">
