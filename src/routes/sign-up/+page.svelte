@@ -27,7 +27,7 @@
         await fetchPost(url, credentials).then((fetchResponce) => {
             const { status } = fetchResponce;
 
-            if (status > 200) return;
+            if (status >= 400) return;
 
             window.location.href = "/";
         });

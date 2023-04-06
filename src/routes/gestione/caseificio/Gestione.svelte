@@ -2,22 +2,87 @@
     import HeaderSection from "../HeaderSection.svelte";
     import Input from "$lib/components/input/Input.svelte";
     import Button from "$lib/components/button/Button.svelte";
+    import { onMount } from "svelte";
+    import { fetchPost } from "$lib/utils/util-fetch.js";
+    import { getCookie } from "$lib/utils/util-cookie.js";
 
-    export let listFoto = [
-        { src: "/assets/caseificio.png" },
-        { src: "/assets/caseificio.png" },
-        { src: "/assets/caseificio.png" },
-    ];
-
+    $: caseificioCode = null;
+    $: inputValue = null;
+    $: listFoto = [];
     $: isButtonDisabled = true;
+
+    onMount(async () => {
+        let fetchInput = { uuid: getCookie("id_user") };
+        let url = "http://localhost:8888/select_user_by_uuid.php";
+
+        await fetchPost(url, fetchInput).then(async (fetchResponce) => {
+            const { status, data } = fetchResponce;
+
+            if (status >= 400) return;
+
+            const { user_permission } = data;
+            caseificioCode = user_permission.split("_")[1];
+
+            let fetchInput = { code: caseificioCode };
+            let url = "http://localhost:8888/select_caseificio_by_code.php";
+
+            await fetchPost(url, fetchInput).then((fetchResponce) => {
+                const { status, data } = fetchResponce;
+
+                if (status >= 400) return;
+
+                inputValue = data.name_caseificio;
+            });
+        });
+
+        fetchInput = { code: caseificioCode };
+        url = "http://localhost:8888/select_assets_by_caseificio_code.php";
+
+        await fetchPost(url, fetchInput).then(async (fetchResponce) => {
+            const { status, data } = fetchResponce;
+
+            console.log(fetchResponce);
+
+            if (status >= 400) return;
+
+            data.forEach((asset) => {
+                listFoto.push({ src: asset.asset_src });
+            });
+
+            listFoto = [...listFoto]
+        });
+    });
+
+    const parentHandlerInput = (value) => {
+        isButtonDisabled = false;
+        inputValue = value;
+    };
+
+    const handlerClick = async () => {
+        const fetchInput = { name: inputValue, code: caseificioCode };
+        const url = "http://localhost:8888/update_caseificio_name_by_code.php";
+
+        await fetchPost(url, fetchInput).then((fetchResponce) => {
+            const { status } = fetchResponce;
+
+            if (status >= 400) return;
+
+            isButtonDisabled = true;
+        });
+    };
 </script>
 
 <section class="container">
-    <HeaderSection />
+    <HeaderSection content={`Codice casaeficio: <span class="text-accent">${caseificioCode}</span>`} />
     <div class="container">
         <div class="container-input">
             <h5 class="text">Nome caseificio:</h5>
-            <Input type="text" required="true" value={"current name"} />
+            <Input
+                type="text"
+                required="true"
+                value={inputValue}
+                {parentHandlerInput}
+            />
         </div>
         <div class="container-input">
             <h5 class="text">Foto:</h5>
@@ -27,7 +92,7 @@
                 {/each}
             </div>
         </div>
-        <Button text="Salva" disabled={isButtonDisabled}/>
+        <Button text="Salva" disabled={isButtonDisabled} {handlerClick} />
     </div>
 </section>
 

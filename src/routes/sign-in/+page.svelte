@@ -17,17 +17,17 @@
         await fetchPost(url, credentials).then((fetchResponce) => {
             const { status, data } = fetchResponce;
 
-            if (status > 200) return;
+            if (status >= 400) return;
 
-            const { id_user, firstname_user, lastname_user, permission_name } =
+            const { id_user, user_name, user_lastname, user_permission } =
                 data;
 
-            setCookie("firstname_user", firstname_user, 1);
-            setCookie("lastname_user", lastname_user, 1);
+            setCookie("firstname_user", user_name, 1);
+            setCookie("lastname_user", user_lastname, 1);
             setCookie("id_user", id_user, 1);
-            if (permission_name.includes("consorzio")) {
+            if (user_permission.includes("consorzio")) {
                 setCookie("permission", "consorzio", 1);
-            } else if (permission_name.includes("caseificio")) {
+            } else if (user_permission.includes("caseificio")) {
                 setCookie("code_caseificio", "beta_code", 1);
                 setCookie("permission", "caseificio", 1);
             }
