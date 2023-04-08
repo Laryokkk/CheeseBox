@@ -8,8 +8,27 @@
     import { getCookie } from "$lib/utils/util-cookie.js";
 
     let caseificioCode = null;
-    let formMilk;
-    $: isButtonDisabled = true;
+    let formMilk, formForma;
+    $: isMilkButtonDisabled = true;
+    $: isFormaButtonDisabled = true;
+    $: checkValue = "";
+
+    const getMonth = () => {
+        const d = new Date(),
+            m = d.getMonth() + 1,
+            xdate = m < 10 ? "0" + m : m;
+
+        return xdate;
+    };
+
+    const getYear = () => {
+        return new Date().getFullYear();
+    };
+
+    const codeForma = {
+        mounth: getMonth(),
+        year: getYear(),
+    };
 
     onMount(async () => {
         let fetchInput = { uuid: getCookie("id_user") };
@@ -36,11 +55,19 @@
         let url = "http://localhost:8888/insert_milk.php";
 
         await fetchPost(url, fetchInput).then(async (fetchResponce) => {
-            const { status } = fetchResponce;
+            const { status, data } = fetchResponce;
 
             if (status >= 400) return;
 
-            isButtonDisabled = true;
+            data.forEach((rec) => {
+                checkValue += `LATE INSERITO RACOLTO ---> Quantita: ${rec.milk_quantity} \n`;
+            });
+
+            setTimeout(() => {
+                checkValue = "";
+            }, 6000);
+
+            isMilkButtonDisabled = true;
         });
 
         fetchInput = {
@@ -51,16 +78,59 @@
         url = "http://localhost:8888/insert_milk.php";
 
         await fetchPost(url, fetchInput).then(async (fetchResponce) => {
-            const { status } = fetchResponce;
+            const { status, data } = fetchResponce;
 
             if (status >= 400) return;
 
-            isButtonDisabled = true;
+            data.forEach((rec) => {
+                checkValue += `LATE INSERITO LAVORATO ---> Quantita: ${rec.milk_quantity} \n`;
+            });
+
+            setTimeout(() => {
+                checkValue = "";
+            }, 6000);
+
+            isMilkButtonDisabled = true;
         });
     };
 
-    const parentHandlerInput = (value) => {
-        isButtonDisabled = false;
+    const handlerClickForma = async () => {
+        const elements = {
+            stagionatura: formForma.querySelector(".input-stagionatura"),
+            quantita: formForma.querySelector(".input-quantita"),
+            scelta: formForma.querySelector(".input-scelta"),
+        };
+
+        const fetchInput = {
+            code: caseificioCode,
+            quantity: elements.quantita.value,
+            stagionatura: elements.stagionatura.value,
+            scelta: elements.scelta.value,
+        };
+
+        const url = "http://localhost:8888/insert_forma.php";
+
+        await fetchPost(url, fetchInput).then(async (fetchResponce) => {
+            const { status, data } = fetchResponce;
+
+            if (status >= 400) return;
+
+            data.forEach((rec) => {
+                checkValue += `NUOVA FORMA INSERITA ---> Codice: ${rec.forma_code} / Stagionatura: ${rec.forma_stagionatura} / Scelta: ${rec.forma_scelta} \n`;
+            });
+
+            setTimeout(() => {
+                checkValue = "";
+            }, 6000);
+        });
+    };
+
+    const parentHandlerMilkInput = (value) => {
+        isMilkButtonDisabled = value === "";
+    };
+
+    const parentHandlerFormaInput = (value) => {
+        isFormaButtonDisabled = value === "";
     };
 </script>
 
@@ -72,50 +142,82 @@
             <form name="form-latte" bind:this={formMilk}>
                 <div class="container-input">
                     <h5 class="text">Racolto:</h5>
-                    <Input type="number" required="true" {parentHandlerInput}/>
+                    <Input
+                        type="number"
+                        parentHandlerInput={parentHandlerMilkInput}
+                    />
                 </div>
                 <div class="container-input">
                     <h5 class="text">Lavorato:</h5>
-                    <Input type="number" required="true" {parentHandlerInput}/>
+                    <Input
+                        type="number"
+                        parentHandlerInput={parentHandlerMilkInput}
+                    />
                 </div>
-                <Button text="Salva" disabled={isButtonDisabled} handlerClick={handlerClickMilk} />
+                <Button
+                    text="Salva"
+                    disabled={isMilkButtonDisabled}
+                    handlerClick={handlerClickMilk}
+                />
             </form>
         </div>
         <div class="wrapper">
             <h3 class="text text-accent">Forme</h3>
-            <form name="form-forme">
+            <form name="form-forme" bind:this={formForma}>
                 <div class="internal-wrapper">
                     <div class="container-wrapper">
                         <div class="container-input">
                             <h5 class="text">Codice forma:</h5>
                             <Input
-                                type="number"
-                                value={"1232421"}
+                                type="text"
+                                className="input-code"
+                                value={`${caseificioCode}-${codeForma.year}-${codeForma.mounth}-xxxx`}
                                 required="true"
                                 readonly={true}
                             />
                         </div>
                         <div class="container-input">
                             <h5 class="text">Stagionatura:</h5>
-                            <Input type="select" options={[]} required="true" />
+                            <Input
+                                type="select"
+                                className="input-stagionatura"
+                                options={["20", "24", "30", "36"]}
+                                required="true"
+                                parentHandlerInput={parentHandlerFormaInput}
+                            />
                         </div>
                     </div>
                     <div class="container-wrapper">
                         <div class="container-input">
                             <h5 class="text">Quantita:</h5>
-                            <Input type="number" required="true" />
+                            <Input
+                                type="number"
+                                className="input-quantita"
+                                required="true"
+                                parentHandlerInput={parentHandlerFormaInput}
+                            />
                         </div>
                         <div class="container-input">
                             <h5 class="text">Scelta:</h5>
-                            <Input type="select" options={[]} required="true" />
+                            <Input
+                                type="select"
+                                className="input-scelta"
+                                options={["Prima", "Seconda"]}
+                                required="true"
+                                parentHandlerInput={parentHandlerFormaInput}
+                            />
                         </div>
                     </div>
                 </div>
-                <Button text="Salva" />
+                <Button
+                    text="Salva"
+                    disabled={isFormaButtonDisabled}
+                    handlerClick={handlerClickForma}
+                />
             </form>
         </div>
     </div>
-    <Check />
+    <Check value={checkValue} />
 </section>
 
 <style>

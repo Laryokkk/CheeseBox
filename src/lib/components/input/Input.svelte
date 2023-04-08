@@ -14,8 +14,10 @@
     export let autocomplete = undefined;
     export let required = undefined;
     export let parentHandlerInput = undefined;
+    export let className = "";
     export let style = undefined;
     export let value = null;
+    export let options = [];
 
     let isValidInput;
     let invalid;
@@ -35,6 +37,9 @@
             break;
         case "password":
             isValidInput = isValidInputPassword;
+            break;
+        case "select":
+            isValidInput = true;
             break;
 
         default:
@@ -57,30 +62,34 @@
 </script>
 
 <div class="container">
-    <input
-        {type}
-        class="text"
-        class:invalid={invalid}
-
-        {placeholder}
-        {autocomplete}
-        {readonly}
-
-        on:input={handlerInput}
-        on:change={handlerValidation}
-
-        {invalid}
-        {required}
-
-        {minlength}
-        {style}
-
-        {value}
-    />
+    {#if type === "select"}
+        <select class="text {className}" {required} {style}>
+            {#each options as option}
+                <option class="text" value={option}>{option}</option>
+            {/each}
+        </select>
+    {:else}
+        <input
+            {type}
+            class="text {className}"
+            class:invalid
+            {placeholder}
+            {autocomplete}
+            {readonly}
+            on:input={handlerInput}
+            on:change={handlerValidation}
+            {invalid}
+            {required}
+            {minlength}
+            {style}
+            {value}
+        />
+    {/if}
 </div>
 
 <style>
-    input {
+    input,
+    select {
         outline: none;
 
         width: 20rem;
@@ -94,6 +103,11 @@
         background-color: var(--background-input);
 
         transition: all 0.2s ease-in;
+    }
+
+    select {
+        width: 22rem;
+        height: 3rem;
     }
 
     input.invalid {

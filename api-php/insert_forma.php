@@ -11,10 +11,12 @@ $response = array();
 
 $code = $data["code"];
 $quantity = $data["quantity"];
-$type = $data["type"];
+$stagionatura = $data["stagionatura"];
+$scelta = $data["scelta"];
+$status = "stagionatura";
 
-$stmt = $conn->prepare("CALL insert_milk(?,?,?)");
-$stmt->bind_param('sis', $code, $quantity, $type);
+$stmt = $conn->prepare("CALL insert_forme(?,?,?,?,?)");
+$stmt->bind_param('sisii', $scelta, $stagionatura, $status, $code, $quantity);
 $stmt->execute();
 
 $result = $stmt->get_result();

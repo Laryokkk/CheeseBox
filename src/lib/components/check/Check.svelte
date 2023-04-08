@@ -1,11 +1,5 @@
 <script>
-    export let items = ["hello", "man"];
-
-    let value = "";
-
-    items.forEach((item) => {
-        value = value.concat(` ${item}`);
-    });
+    export let value = '';
 </script>
 
 <section class="container">
