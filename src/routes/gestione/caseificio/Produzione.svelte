@@ -181,7 +181,7 @@
                             <Input
                                 type="select"
                                 className="input-stagionatura"
-                                options={["20", "24", "30", "36"]}
+                                options={["12", "24", "30", "36"]}
                                 required="true"
                                 parentHandlerInput={parentHandlerFormaInput}
                             />

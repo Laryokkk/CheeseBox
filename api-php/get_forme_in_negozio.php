@@ -8,17 +8,20 @@ require_once(__DIR__.'/connection.php');
 $json = file_get_contents('php://input');
 $data = json_decode($json, true);
 $response = array();
+$result = null;
 
 $code = $data["code"];
-$quantity = $data["quantity"];
-$stagionatura = $data["stagionatura"];
-$scelta = $data["scelta"];
 
-$stmt = $conn->prepare("CALL insert_forme(?,?,?,?)");
-$stmt->bind_param('siii', $scelta, $stagionatura, $code, $quantity);
-$stmt->execute();
-
-$result = $stmt->get_result();
+if (isset($code)) {
+    $stmt = $conn->prepare("CALL get_forme_in_negozio_by_caseificio(?)");
+    $stmt->bind_param('s', $code);
+    $stmt->execute();
+    $result = $stmt->get_result();
+} else {
+    $stmt = $conn->prepare("CALL get_forme_in_negozio()");
+    $stmt->execute();
+    $result = $stmt->get_result();
+}
 
 if ($result != null) {
     $records = array();

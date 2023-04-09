@@ -93,5 +93,55 @@ export const load = async ({ params }) => {
             });
         });
 
+    // -----------------------------------------
+
+    await fetchPost(`${url_home}/get_forme_in_stagionatura.php`, { code })
+        .then((fetchResponce) => {
+            const { status, data } = fetchResponce;
+
+            if (status >= 400) return;
+
+            data.forEach(({ forma_stagionatura }) => {
+                switch (forma_stagionatura) {
+                    case 12:
+                        content.forme.stagionatura.m12 += 1
+                        break;
+                    case 24:
+                        content.forme.stagionatura.m24 += 1
+                        break;
+                    case 30:
+                        content.forme.stagionatura.m30 += 1
+                        break;
+                    case 36:
+                        content.forme.stagionatura.m36 += 1
+                        break;
+                }
+            });
+        });
+
+    await fetchPost(`${url_home}/get_forme_in_negozio.php`, { code })
+        .then((fetchResponce) => {
+            const { status, data } = fetchResponce;
+
+            if (status >= 400) return;
+
+            data.forEach(({ forma_stagionatura }) => {
+                switch (forma_stagionatura) {
+                    case 12:
+                        content.forme.store.m12 += 1
+                        break;
+                    case 24:
+                        content.forme.store.m24 += 1
+                        break;
+                    case 30:
+                        content.forme.store.m30 += 1
+                        break;
+                    case 36:
+                        content.forme.store.m36 += 1
+                        break;
+                }
+            });
+        });
+
     return { section, links, content };
 }
