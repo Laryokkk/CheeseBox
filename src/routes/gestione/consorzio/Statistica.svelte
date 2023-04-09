@@ -49,41 +49,41 @@
             </div>
         </div>
         <div class="wrapper">
-            <h4 class="text">Scorso messe:</h4>
+            <h4 class="text">Tutto:</h4>
             <div class="container-section">
                 <div class="section-content">
                     <h5 class="text">
                         Late racolto: <span class="text-accent"
-                            >{content.past.late.racolto}l</span
+                            >{content.all.late.racolto}l</span
                         >
                     </h5>
                     <h5 class="text">
                         Late lavorato: <span class="text-accent"
-                            >{content.past.late.lavorato}l</span
+                            >{content.all.late.lavorato}l</span
                         >
                     </h5>
                 </div>
                 <div class="section-content">
                     <h5 class="text">
                         Forme prodotte: <span class="text-accent"
-                            >{content.past.forme.prodotte}pz</span
+                            >{content.all.forme.prodotte}pz</span
                         >
                     </h5>
                     <h5 class="text">
                         Forme vendute: <span class="text-accent"
-                            >{content.past.forme.vendute}pz</span
+                            >{content.all.forme.vendute}pz</span
                         >
                     </h5>
                 </div>
                 <div class="section-content">
                     <h5 class="text">
                         Ricavo totale: <span class="text-accent"
-                            >{content.past.ricavo.totale}€</span
+                            >{content.all.ricavo.totale}€</span
                         >
                     </h5>
                     <h5 class="text">
                         Ricavo grezzo: <span class="text-accent"
-                            >{content.past.ricavo.grezzo}€</span
+                            >{content.all.ricavo.grezzo}€</span
                         >
                     </h5>
                 </div>
@@ -95,23 +95,23 @@
                 <div class="container-section">
                     <div class="section-content">
                         <h5 class="text">
-                            Ricavo totale: <span class="text-accent"
-                                >{content.past.ricavo.totale}€</span
+                            12 mesi: <span class="text-accent"
+                                >{content.forme.stagionatura.m12}€</span
                             >
                         </h5>
                         <h5 class="text">
-                            Ricavo grezzo: <span class="text-accent"
-                                >{content.past.ricavo.grezzo}€</span
+                            24 mesi: <span class="text-accent"
+                                >{content.forme.stagionatura.m24}€</span
                             >
                         </h5>
                         <h5 class="text">
-                            Ricavo totale: <span class="text-accent"
-                                >{content.past.ricavo.totale}€</span
+                            30 mesi: <span class="text-accent"
+                                >{content.forme.stagionatura.m30}€</span
                             >
                         </h5>
                         <h5 class="text">
-                            Ricavo grezzo: <span class="text-accent"
-                                >{content.past.ricavo.grezzo}€</span
+                            36 mesi: <span class="text-accent"
+                                >{content.forme.stagionatura.m36}€</span
                             >
                         </h5>
                     </div>
@@ -122,23 +122,23 @@
                 <div class="container-section">
                     <div class="section-content">
                         <h5 class="text">
-                            Ricavo totale: <span class="text-accent"
-                                >{content.past.ricavo.totale}€</span
+                            12 mesi: <span class="text-accent"
+                                >{content.forme.store.m12}€</span
                             >
                         </h5>
                         <h5 class="text">
-                            Ricavo grezzo: <span class="text-accent"
-                                >{content.past.ricavo.grezzo}€</span
+                            24 mesi: <span class="text-accent"
+                                >{content.forme.store.m24}€</span
                             >
                         </h5>
                         <h5 class="text">
-                            Ricavo totale: <span class="text-accent"
-                                >{content.past.ricavo.totale}€</span
+                            30 mesi: <span class="text-accent"
+                                >{content.forme.store.m30}€</span
                             >
                         </h5>
                         <h5 class="text">
-                            Ricavo grezzo: <span class="text-accent"
-                                >{content.past.ricavo.grezzo}€</span
+                            36 mesi: <span class="text-accent"
+                                >{content.forme.store.m36}€</span
                             >
                         </h5>
                     </div>

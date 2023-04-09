@@ -1,3 +1,5 @@
+import { fetchPost } from "$lib/utils/util-fetch.js";
+
 export const load = async ({ params }) => {
     const { section } = params;
 
@@ -10,47 +12,86 @@ export const load = async ({ params }) => {
     const content = {
         current: {
             late: {
-                racolto: 1000,
-                lavorato: 1200,
+                racolto: 0,
+                lavorato: 0,
             },
             forme: {
-                prodotte: 430,
-                vendute: 210,
+                prodotte: 0,
+                vendute: 0,
             },
             ricavo: {
-                totale: 3000,
-                grezzo: 200,
+                totale: 0,
+                grezzo: 0,
             },
         },
-        past: {
+        all: {
             late: {
-                racolto: 2000,
-                lavorato: 1500,
+                racolto: 0,
+                lavorato: 0,
             },
             forme: {
-                prodotte: 230,
-                vendute: 110,
+                prodotte: 0,
+                vendute: 0,
             },
             ricavo: {
-                totale: 6000,
-                grezzo: 500,
+                totale: 0,
+                grezzo: 0,
             },
         },
         forme: {
-            staggionatura: {
-                m12: 120,
-                m24: 2220,
-                m30: 460,
-                m36: 120,
+            stagionatura: {
+                m12: 0,
+                m24: 0,
+                m30: 0,
+                m36: 0,
             },
-            negozio: {
-                m12: 540,
-                m24: 270,
-                m30: 180,
-                m36: 900,
+            store: {
+                m12: 0,
+                m24: 0,
+                m30: 0,
+                m36: 0,
             },
         },
     };
+
+    const url_home = "http://localhost:8888";
+    const code = '0001';
+    const start = '2023-04-01';
+    const end = '2023-04-30';
+
+    await fetchPost(`${url_home}/get_milk.php`, { start, end, code })
+        .then((fetchResponce) => {
+            const { status, data } = fetchResponce;
+
+            if (status >= 400) return;
+
+            data.forEach(({ milk_quantity, milk_type }) => {
+                if (!milk_quantity || milk_quantity === '') return;
+
+                if (milk_type === 'lavorato') {
+                    content.current.late.lavorato += milk_quantity;
+                } else if (milk_type === 'racolto') {
+                    content.current.late.racolto += milk_quantity;
+                }
+            });
+        });
+
+    await fetchPost(`${url_home}/get_milk.php`, { code })
+        .then((fetchResponce) => {
+            const { status, data } = fetchResponce;
+
+            if (status >= 400) return;
+
+            data.forEach(({ milk_quantity, milk_type }) => {
+                if (!milk_quantity || milk_quantity === '') return;
+
+                if (milk_type === 'lavorato') {
+                    content.all.late.lavorato += milk_quantity;
+                } else if (milk_type === 'racolto') {
+                    content.all.late.racolto += milk_quantity;
+                }
+            });
+        });
 
     return { section, links, content };
 }
