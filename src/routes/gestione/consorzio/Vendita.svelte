@@ -29,8 +29,6 @@
 
             if (status >= 400) return;
 
-            console.log(data);
-
             data.forEach((rec) => {
                 checkValue += `FORMA VENDUTA ---> Codice: ${rec.forma_code} / Stagionatura: ${rec.forma_stagionatura} / Scelta: ${rec.forma_scelta} / Prezzo: ${rec.forma_price_sell} \n`;
             });
