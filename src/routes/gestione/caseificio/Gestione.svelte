@@ -41,8 +41,6 @@
         await fetchPost(url, fetchInput).then(async (fetchResponce) => {
             const { status, data } = fetchResponce;
 
-            console.log(fetchResponce);
-
             if (status >= 400) return;
 
             data.forEach((asset) => {

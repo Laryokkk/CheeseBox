@@ -19,8 +19,6 @@
 
             if (status >= 400) return;
 
-            console.log(data);
-
             const { id_user, user_name, user_lastname, user_permission } =
                 data;
 

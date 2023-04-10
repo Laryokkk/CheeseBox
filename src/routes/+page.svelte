@@ -6,6 +6,7 @@
     import CheeseStats from "$lib/assets/dalle_cheese_1.png";
 
     import { isEmpty } from "$lib/utils/util-validate.js";
+    import { fetchPost } from "$lib/utils/util-fetch.js";
 
     const blobl = {
         v1: {
@@ -26,22 +27,43 @@
         },
     };
 
-    const caseifici = [
-        {
-            name: "Bella Casa",
-            code: "123421",
-            photoPath: "./src/lib/assets/caseifici/house_0.png",
-            href: "/casaificio/dasf-gasg112-dsfsd",
-        },
-        {
-            name: "Brutta Home",
-            code: "123421342",
-            photoPath: "./src/lib/assets/caseifici/house_1.png",
-            href: "/casaificio/dasf-gasg112-dsfsd",
-        },
-    ];
-
+    let caseifici = [];
     $: houses = caseifici;
+
+    const init = () => {
+        const list = [];
+        const url = "http://localhost:8888/select_caseifici.php";
+
+        fetchPost(url, {}).then(async (fetchResponce) => {
+            const { status, data } = fetchResponce;
+
+            if (status >= 400) return;
+
+            data.forEach(async (elCasa) => {
+                const url =
+                    "http://localhost:8888/select_assets_by_caseificio_code.php";
+
+                fetchPost(url, { code: elCasa.code_caseificio }).then(
+                    (fetchResponce) => {
+                        const { status, data } = fetchResponce;
+
+                        if (status >= 400) return;
+
+                        list.push({
+                            name: elCasa.name_caseificio,
+                            code: elCasa.code_caseificio,
+                            photoPath: data[0].asset_src,
+                            href: `/caseificio/${elCasa.code_caseificio}`,
+                        });
+
+                        caseifici = list;
+                    }
+                );
+            });
+        });
+    };
+
+    init();
 
     const handlerInput = (value) => {
         if (isEmpty(value)) {
@@ -88,11 +110,11 @@
         <div class="text">
             <h1 class="text">Statistica</h1>
             <h2 class="text">
-                <span class="text-accent">12</span> Caseifici
+                <span class="text-accent">∞</span> Caseifici
                 <br />
-                <span class="text-accent">1257</span> Litri di latte
+                <span class="text-accent">∞</span> Litri di latte
                 <br />
-                <span class="text-accent">146</span> Forme prodotte
+                <span class="text-accent">∞</span> Forme prodotte
             </h2>
         </div>
     </section>
