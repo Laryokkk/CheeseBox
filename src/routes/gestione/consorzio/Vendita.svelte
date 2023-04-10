@@ -3,6 +3,7 @@
     import Check from "$lib/components/check/Check.svelte";
     import Input from "$lib/components/input/Input.svelte";
     import Button from "$lib/components/button/Button.svelte";
+    import { fetchPost } from "$lib/utils/util-fetch.js";
 
     $: isButtonDisabled = true;
     $: checkValue = '';
@@ -28,13 +29,15 @@
 
             if (status >= 400) return;
 
+            console.log(data);
+
             data.forEach((rec) => {
-                checkValue += `FORMA VENDUTA ---> Codice: ${rec.forma_code} / Stagionatura: ${rec.forma_stagionatura} / Scelta: ${rec.forma_scelta} / Prezzo: ${rec.forma_prezzo} \n`;
+                checkValue += `FORMA VENDUTA ---> Codice: ${rec.forma_code} / Stagionatura: ${rec.forma_stagionatura} / Scelta: ${rec.forma_scelta} / Prezzo: ${rec.forma_price_sell} \n`;
             });
 
             setTimeout(() => {
                 checkValue = "";
-            }, 6000);
+            }, 10000);
         });
     };
 

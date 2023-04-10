@@ -65,7 +65,7 @@
 
             setTimeout(() => {
                 checkValue = "";
-            }, 6000);
+            }, 10000);
 
             isMilkButtonDisabled = true;
         });
@@ -88,7 +88,7 @@
 
             setTimeout(() => {
                 checkValue = "";
-            }, 6000);
+            }, 10000);
 
             isMilkButtonDisabled = true;
         });
@@ -121,7 +121,7 @@
 
             setTimeout(() => {
                 checkValue = "";
-            }, 6000);
+            }, 10000);
         });
     };
 

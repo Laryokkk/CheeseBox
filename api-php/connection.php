@@ -1,5 +1,5 @@
 <?php
-ini_set('display_errors', 'Off'); 
+// ini_set('display_errors', 'Off'); 
 $host = 'localhost:8889';
 $username = 'root';
 $password = 'root';
