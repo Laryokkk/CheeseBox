@@ -30,6 +30,7 @@ h6 {
     font-family: 'Krona One', sans-serif;
     font-weight: 400;
     color: var(--text);
+    word-wrap: break-word;
 }
 
 .text-extend {

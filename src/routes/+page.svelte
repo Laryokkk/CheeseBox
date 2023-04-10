@@ -52,7 +52,7 @@
                         list.push({
                             name: elCasa.name_caseificio,
                             code: elCasa.code_caseificio,
-                            photoPath: data[0].asset_src,
+                            photoPath: data[0] ? data[0].asset_src : 'assets/caseificio_.png',
                             href: `/caseificio/${elCasa.code_caseificio}`,
                         });
 
@@ -195,6 +195,7 @@
         min-height: 60vh;
 
         display: flex;
+        justify-content: center;
         flex-wrap: wrap;
         gap: 2rem 4rem;
 

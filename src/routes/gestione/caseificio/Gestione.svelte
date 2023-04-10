@@ -117,7 +117,7 @@
         display: flex;
         align-items: flex-start;
         flex-direction: column;
-        gap: 0.6rem;
+        gap: 0.4rem;
     }
 
     div.wrapper-photo {

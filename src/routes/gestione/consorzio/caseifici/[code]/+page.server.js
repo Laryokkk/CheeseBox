@@ -31,7 +31,9 @@ export const load = async ({ params }) => {
 
     const url = "http://localhost:8888/select_caseifici.php";
 
-    await fetchPost(url, {}).then(async (fetchResponce) => {
+    await fetchPost(url, {})
+    
+    .then((fetchResponce) => {
         const { status, data } = fetchResponce;
 
         if (status >= 400) return;

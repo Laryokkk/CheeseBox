@@ -47,7 +47,7 @@
     }
 
     img {
-        height: 50vh;
+        height: 40vh;
     }
 
     h4 {

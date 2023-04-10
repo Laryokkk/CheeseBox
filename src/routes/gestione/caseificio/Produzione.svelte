@@ -262,6 +262,6 @@
         display: flex;
         align-items: flex-start;
         flex-direction: column;
-        gap: 0.2rem;
+        gap: 0.4rem;
     }
 </style>

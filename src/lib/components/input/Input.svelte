@@ -11,6 +11,7 @@
     export let placeholder = undefined;
     export let readonly = false;
     export let minlength = undefined;
+    export let maxlength = undefined;
     export let autocomplete = undefined;
     export let required = undefined;
     export let parentHandlerInput = undefined;
@@ -52,6 +53,14 @@
         parentHandlerInput && parentHandlerInput(value);
 
         invalid = !isValidInputText(value);
+
+        if (maxlength) {
+            if (value.length > maxlength) {
+                e.preventDefault();
+
+                e.target.value = value.slice(0, value.length - 1);;
+            }
+        }
     };
 
     const handlerValidation = (e) => {
@@ -80,7 +89,6 @@
             on:change={handlerValidation}
             {invalid}
             {required}
-            {minlength}
             {style}
             {value}
         />

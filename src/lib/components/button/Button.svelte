@@ -1,11 +1,12 @@
 <script>
     export let text = "";
+    export let type = "";
     export let style = undefined;
     export let disabled = false;
     export let handlerClick = undefined;
 </script>
 
-<button {style} on:click={handlerClick} {disabled}>
+<button {style} {type} on:click={handlerClick} {disabled}>
     <h5 class="text">
         {text}
     </h5>
