@@ -19,6 +19,8 @@
 
             if (status >= 400) return;
 
+            console.log(data);
+
             const { id_user, user_name, user_lastname, user_permission } =
                 data;
 
@@ -28,7 +30,7 @@
             if (user_permission.includes("consorzio")) {
                 setCookie("permission", "consorzio", 1);
             } else if (user_permission.includes("caseificio")) {
-                setCookie("code_caseificio", "beta_code", 1);
+                setCookie("code_caseificio", user_permission.toString().split('_')[1], 1);
                 setCookie("permission", "caseificio", 1);
             }
 

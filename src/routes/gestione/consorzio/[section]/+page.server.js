@@ -162,8 +162,6 @@ export const load = async ({ params }) => {
         .then((fetchResponce) => {
             const { status, data } = fetchResponce;
 
-            console.log(fetchResponce);
-
             if (status >= 400) return;
 
             content.all.forme.vendute = Object.values(data)[0];
@@ -173,8 +171,6 @@ export const load = async ({ params }) => {
     await fetchPost(`${url_home}/get_forme_vendute.php`, { start, end })
         .then((fetchResponce) => {
             const { status, data } = fetchResponce;
-
-            console.log(fetchResponce);
 
             if (status >= 400) return;
 
