@@ -1,7 +1,6 @@
 import { fetchPost } from "$lib/utils/util-fetch.js";
-import { getCookie } from "$lib/utils/util-cookie.js";
 
-export const load = async ({ params, cookies }) => {
+export const load = async ({ params, cookies, url }) => {
     const { section } = params;
 
     const links = [
@@ -48,7 +47,7 @@ export const load = async ({ params, cookies }) => {
     };
 
     const url_home = "http://localhost:8888";
-    const code = cookies.get('code_caseificio');
+    const code = url.searchParams.get('code') || cookies.get('code_caseificio');
     const start = '2023-04-01';
     const end = '2023-04-30';
 

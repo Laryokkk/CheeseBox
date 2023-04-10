@@ -23,7 +23,7 @@
     <div class="container">
         {#each links as { title, href, active }}
             <a {href}>
-                <h4 class="text text-extend {active ? 'text-accent' : ''}">
+                <h4 class="text text-extend {active ? 'text-accent' : ''} text-menu">
                     {title}
                 </h4>
             </a>
@@ -31,8 +31,12 @@
     </div>
     <div class="footer">
         {#if goBack}
-            <a href="/gestione/consorzio/vendita">
-                <img src="/assets/arrow-right.svg" alt="go back arrow" class="go-back">
+            <a href="/gestione/consorzio/statistica">
+                <img
+                    src="/assets/arrow-right.svg"
+                    alt="go back arrow"
+                    class="go-back"
+                />
             </a>
         {/if}
     </div>
@@ -66,11 +70,21 @@
         gap: 1rem;
     }
 
+    div.container {
+        height: 500px;
+        justify-content: unset;
+        overflow: scroll;
+    }
+
     img.go-back {
         transition: all 0.2s ease-in-out;
     }
 
     img.go-back:hover {
         scale: 1.1;
+    }
+
+    .text-menu {
+        text-align: center;
     }
 </style>
