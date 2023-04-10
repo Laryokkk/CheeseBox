@@ -17,36 +17,33 @@ $code = $data["code"];
 
 if (isset($code)) {
     if (isset($start) && isset($end)) {
-        $stmt = $conn->prepare("CALL get_milk_by_caseificio_and_range(?,?,?)");
+        $stmt = $conn->prepare("CALL get_forme_in_prodotte_by_caseificio_and_range(?,?,?)");
         $stmt->bind_param('sss', $start, $end, $code);
         $stmt->execute();
         $result = $stmt->get_result();
     } else {
-        $stmt = $conn->prepare("CALL get_milk_by_caseificio(?)");
+        $stmt = $conn->prepare("CALL get_forme_in_prodotte_by_caseificio(?)");
         $stmt->bind_param('s', $code);
         $stmt->execute();
         $result = $stmt->get_result();
     }
 } else {
     if (isset($start) && isset($end)) {
-        $stmt = $conn->prepare("CALL get_milk_by_range(?,?)");
+        $stmt = $conn->prepare("CALL get_forme_in_prodotte_by_range(?,?)");
         $stmt->bind_param('ss', $start, $end);
         $stmt->execute();
         $result = $stmt->get_result();
     } else {
-        $stmt = $conn->prepare("CALL get_milk()");
+        $stmt = $conn->prepare("CALL get_forme_in_prodotte()");
         $stmt->execute();
         $result = $stmt->get_result();
     }
 }
 
 if ($result != null) {
-    $records = array();
-    while ($row = $result->fetch_assoc()) {
-        $records[] = $row;
-    }
+    $result = $result->fetch_assoc();
     $response = array(
-        'data' => $records,
+        'data' => $result,
         'status' => 200,
     );
 } else {

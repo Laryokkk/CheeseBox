@@ -34,18 +34,6 @@
                         >
                     </h5>
                 </div>
-                <div class="section-content">
-                    <h5 class="text">
-                        Ricavo totale: <span class="text-accent"
-                            >{content.current.ricavo.totale}€</span
-                        >
-                    </h5>
-                    <h5 class="text">
-                        Ricavo grezzo: <span class="text-accent"
-                            >{content.current.ricavo.grezzo}€</span
-                        >
-                    </h5>
-                </div>
             </div>
         </div>
         <div class="wrapper">
@@ -75,18 +63,6 @@
                         >
                     </h5>
                 </div>
-                <div class="section-content">
-                    <h5 class="text">
-                        Ricavo totale: <span class="text-accent"
-                            >{content.all.ricavo.totale}€</span
-                        >
-                    </h5>
-                    <h5 class="text">
-                        Ricavo grezzo: <span class="text-accent"
-                            >{content.all.ricavo.grezzo}€</span
-                        >
-                    </h5>
-                </div>
             </div>
         </div>
         <div class="wrapper wrapper-extend">
@@ -96,22 +72,22 @@
                     <div class="section-content">
                         <h5 class="text">
                             12 mesi: <span class="text-accent"
-                                >{content.forme.stagionatura.m12}€</span
+                                >{content.forme.stagionatura.m12}pz</span
                             >
                         </h5>
                         <h5 class="text">
                             24 mesi: <span class="text-accent"
-                                >{content.forme.stagionatura.m24}€</span
+                                >{content.forme.stagionatura.m24}pz</span
                             >
                         </h5>
                         <h5 class="text">
                             30 mesi: <span class="text-accent"
-                                >{content.forme.stagionatura.m30}€</span
+                                >{content.forme.stagionatura.m30}pz</span
                             >
                         </h5>
                         <h5 class="text">
                             36 mesi: <span class="text-accent"
-                                >{content.forme.stagionatura.m36}€</span
+                                >{content.forme.stagionatura.m36}pz</span
                             >
                         </h5>
                     </div>
@@ -123,22 +99,22 @@
                     <div class="section-content">
                         <h5 class="text">
                             12 mesi: <span class="text-accent"
-                                >{content.forme.store.m12}€</span
+                                >{content.forme.store.m12}pz</span
                             >
                         </h5>
                         <h5 class="text">
                             24 mesi: <span class="text-accent"
-                                >{content.forme.store.m24}€</span
+                                >{content.forme.store.m24}pz</span
                             >
                         </h5>
                         <h5 class="text">
                             30 mesi: <span class="text-accent"
-                                >{content.forme.store.m30}€</span
+                                >{content.forme.store.m30}pz</span
                             >
                         </h5>
                         <h5 class="text">
                             36 mesi: <span class="text-accent"
-                                >{content.forme.store.m36}€</span
+                                >{content.forme.store.m36}pz</span
                             >
                         </h5>
                     </div>

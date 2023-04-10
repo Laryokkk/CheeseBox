@@ -34,18 +34,6 @@
                         >
                     </h5>
                 </div>
-                <div class="section-content">
-                    <h5 class="text">
-                        Ricavo totale: <span class="text-accent"
-                            >{content.current.ricavo.totale}€</span
-                        >
-                    </h5>
-                    <h5 class="text">
-                        Ricavo grezzo: <span class="text-accent"
-                            >{content.current.ricavo.grezzo}€</span
-                        >
-                    </h5>
-                </div>
             </div>
         </div>
         <div class="wrapper">
@@ -72,18 +60,6 @@
                     <h5 class="text">
                         Forme vendute: <span class="text-accent"
                             >{content.all.forme.vendute}pz</span
-                        >
-                    </h5>
-                </div>
-                <div class="section-content">
-                    <h5 class="text">
-                        Ricavo totale: <span class="text-accent"
-                            >{content.all.ricavo.totale}€</span
-                        >
-                    </h5>
-                    <h5 class="text">
-                        Ricavo grezzo: <span class="text-accent"
-                            >{content.all.ricavo.grezzo}€</span
                         >
                     </h5>
                 </div>

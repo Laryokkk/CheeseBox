@@ -19,10 +19,6 @@ export const load = async ({ params }) => {
                 prodotte: 0,
                 vendute: 0,
             },
-            ricavo: {
-                totale: 0,
-                grezzo: 0,
-            },
         },
         all: {
             late: {
@@ -32,10 +28,6 @@ export const load = async ({ params }) => {
             forme: {
                 prodotte: 0,
                 vendute: 0,
-            },
-            ricavo: {
-                totale: 0,
-                grezzo: 0,
             },
         },
         forme: {
@@ -141,6 +133,50 @@ export const load = async ({ params }) => {
                         break;
                 }
             });
+        });
+
+    // -----------------------------------------
+
+    await fetchPost(`${url_home}/get_forme_prodotte.php`, { code })
+        .then((fetchResponce) => {
+            const { status, data } = fetchResponce;
+
+            if (status >= 400) return;
+
+            content.all.forme.prodotte = Object.values(data)[0];
+
+        });
+
+    await fetchPost(`${url_home}/get_forme_prodotte.php`, { start, end, code })
+        .then((fetchResponce) => {
+            const { status, data } = fetchResponce;
+
+            if (status >= 400) return;
+
+            content.current.forme.prodotte = Object.values(data)[0];
+
+        });
+
+    // -----------------------------------------
+
+    await fetchPost(`${url_home}/get_forme_vendute.php`, { code })
+        .then((fetchResponce) => {
+            const { status, data } = fetchResponce;
+
+            if (status >= 400) return;
+
+            content.all.forme.vendute = Object.values(data)[0];
+
+        });
+
+    await fetchPost(`${url_home}/get_forme_vendute.php`, { start, end, code })
+        .then((fetchResponce) => {
+            const { status, data } = fetchResponce;
+
+            if (status >= 400) return;
+
+            content.current.forme.vendute = Object.values(data)[0];
+
         });
 
     return { section, links, content };
